@@ -1,0 +1,703 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+.registration .css-mhc70k-MuiGrid-root>.MuiGrid-item {
+    padding: 0 !important;
+}
+
+.registration .box {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+}
+
+.registration h2{
+    font-family: 'Nunito', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: #11175D;
+    margin: 0;
+    margin-top: 225px;
+}
+
+.registration p{
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(17, 23, 93,.5);
+    margin: 0;
+}
+
+.registration .MuiFormHelperText-root{
+    font-size: 14px;
+    color: red;
+}
+
+.registration Button{
+   
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+}
+ .registration .msg{
+    font-size: 13px;
+    margin-top: 35px;
+    color: #03014C;
+}
+
+.registration .msg a {
+    display: inline-block;
+    color: #EA6C00;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.registration .forget a {
+    display: inline-block;
+    color: #EA6C00;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 10px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+
+.login-part .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: 0;
+    border-bottom: 1px solid rgba(66, 48, 48, 0.23);
+    border-radius: 0;
+}
+
+.registration .loginoption{
+    display: flex;
+}
+
+.registration .loginoption .option{
+    padding: 20px 40px;
+    border: 1px solid rgba(3, 1, 76,.083);
+    margin-top: 30px;
+    margin-right: 40px;
+    border-radius: 9px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600px;
+    position: relative;
+    padding-left: 92px;
+    cursor: pointer;
+}
+
+.registration .loginoption .option img {
+    position: absolute;
+    top: 20px;
+    left: 54px;
+}
+
+.registration .eyeicon{
+    position: relative;
+    width: 368px;
+}
+
+.registration .eye {
+    position: absolute;
+    bottom: 13px;
+    right: 0;
+  
+}
+/* ========================
+    leftbar-part start
+============================ */
+.leftbar-part{
+    height: 100vh;
+    background: #5F35F5;
+    border-radius: 20px;
+    margin: 35px;
+    text-align: center;
+}
+
+.leftbar-part img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 38px;
+}
+
+.leftbar-part ul li{
+    font-size: 43px;
+    margin-top: 82px;
+    color: #BAD1FF;
+}
+
+.leftbar-part .active{
+    width: 161px;
+    margin-left: auto;
+    background: #fff;
+    padding: 20px 0;
+    position: relative;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: #5F35F5;
+}
+
+.leftbar-part .active::after{
+    content: '';
+    position: absolute;
+    top: 0;
+   right: 0;
+    background: #5F35F5;
+    width: 8px;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.leftbar-part h5{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 42px;
+}
+
+.position{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftbarbox{
+    background: #fff;
+    height: 400px;
+    width: 400px;
+    padding: 50px;
+}
+
+.accountinfo li{
+    border-bottom: 1px solid #5F35F5;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.accountinfo span{
+    color: #5F35F5;
+    font-weight: bolder;
+}
+
+/* ========================
+    leftbar-part end
+============================ */
+/* ========================
+    search-part start
+============================ */
+.search input{
+    padding: 17px 0;
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+    border: 0;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+margin-top: 35px;
+font-family: 'Poppins', sans-serif;
+font-size: 16px;
+font-weight: 500;
+
+}
+
+.search input::placeholder{
+    padding-left: 78px;
+    color: rgba(61, 61, 61,.35);
+}
+
+.search{
+    position: relative;
+}
+
+.search .icon{
+    position: absolute;
+    top: 46%;
+    transform: translateY(50%);
+    left: 23px;
+    font-size: 19px;
+    color: #000000;
+}
+
+.search .icon2{
+    position: absolute;
+    top: 46%;
+    transform: translateY(50%);
+    right: 23px;
+    font-size: 19px;
+    color: #5F35F5;
+}
+/* ========================
+    search-part end
+============================ */
+/* ========================
+    group-part start
+============================ */
+.Grouprequest{
+    padding: 17px 0;
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+    border: 0;
+   
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+margin-top: 35px;
+position: relative;
+overflow-y: scroll;
+height: 358px;
+}
+
+.group{
+    height: 266px !important;
+}
+
+.Grouprequest h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 17px;
+}
+
+.Grouprequest .icon2{
+    position: absolute;
+    top: 17px;
+    
+    right: 23px;
+    font-size: 19px;
+    color: #5F35F5;
+}
+
+.Grouprequest .main{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0,.25);
+    margin: 15px 30px;
+    padding-bottom: 15px;
+}
+
+.Grouprequest .main:last-child{
+    border-bottom: 0;
+}
+
+.Grouprequest img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.Grouprequest .main .item h1{
+    margin-top: 8px;
+}
+
+.Grouprequest .main .button button{
+    margin-top: 17px;
+    padding: 5px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background: #5F35F5;
+    color: #fff;
+    border-radius: 5px;
+}
+/* ========================
+    group-part end
+============================ */
+
+ .off, .on {
+    font-size: 50px;
+}
+
+.on{
+    color: red;
+}
+
+.dark {
+    background: #000;
+    color: #fff;
+    box-shadow: 0px 5px 5px 0px rgba(143, 49, 49, 0.89) !important;
+   
+}
+
+.light{
+    background: #fff;
+}
+
+.dark .Grouprequest {
+    
+    box-shadow: 0px 5px 5px 0px rgba(105, 103, 103, 0.521) !important;
+   
+}
+
+.dark .text{
+    color: #fff!important;
+}
+
+.text {
+    color: #000;
+    display: inline-block;
+    position: absolute;
+    left: 66px;
+    top: 18px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.imagebox{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+
+   
+    
+}
+
+.imagebox .imagepic{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+.imagebox .Overlay {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.301);
+    position: absolute;
+    top: 38px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.Overlay .aiicons{
+    color: #FFFFFF;
+    font-size: 26px;
+    opacity: 0;
+    
+}
+
+.imagebox .Overlay:hover .aiicons{
+    opacity: 1;
+    transition: .4s;
+}
+
+.accountinfo .imagebox{
+    margin-bottom: 60px;
+}
+
+.accountinfo .imagepic{
+    margin-top: 38px;
+}
+
+.img-preview{
+    width: 100%;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: -40px;
+    overflow: hidden;
+}
+
+
+.imagebox2{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+
+   
+    
+}
+
+.imagebox2 .imagepic{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+.imagebox2 .Overlay {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.301);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.leftbarbox button{
+   background: #5F35F5;
+   padding: 10px 0;
+   width: 100%;
+   font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-top: 10px;
+    
+}
+
+
+
+.Grouprequest .extra button{
+    padding: 0 10px !important;
+}
+
+.group button{
+    background: #5F35F5;
+    padding: 0 10px;
+    margin-top: -5px;
+    font-size: 20px;
+     font-family: 'Poppins', sans-serif;
+     color: #fff;
+     border-radius: 5px;
+ }
+
+ .buttongroup button{
+    background: #5F35F5;
+    padding: 10px 20px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    border-radius: 5px;
+ }
+
+ /* ==========================
+         reset-password-start
+ ============================== */
+.resetpassword {
+    background: #5F35F5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.resetpassword h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    color: #fff;
+    text-align: center;
+}
+
+.resetpassword .box{
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+
+.resetpassword .forget h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    color: #5F35F5;
+   
+}
+
+.resetpassword .forget p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #11175D;
+   
+}
+ /* ==========================
+         reset-password-end
+ ============================== */
+ .chat{
+    padding: 17px 30px;
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+    border: 0;
+   
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+margin-top: 35px;
+position: relative;
+
+height: 100vh;
+}
+
+.chat .toparea {
+    display: flex;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.25);
+    padding-bottom: 33px;
+}
+
+.chat .info {
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+
+.chat .toparea .image {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    border-radius: 50%;
+}
+
+
+.chat .toparea .image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+   
+    
+    filter: drop-shadow(0 0 0.75rem rgba(17, 16, 16, 0.288));
+
+}
+
+.chat .toparea .identify h2{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-left: 33px;
+}
+
+
+.chat .toparea .identify p{
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin-left: 33px;
+}
+
+.chat .toparea .round {
+    width: 15px;
+    height: 15px;
+    background: #00FF75;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+
+.chat .toparea .dots {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #5F35F5;
+    font-size: 20px;
+}
+
+.chat .msg{
+    display: flex;
+    position: relative;
+    margin-top: 40px;
+}
+
+.chat .msg p{
+    padding: 13px 52px;
+    display:inline-Block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 10px;
+    
+}
+
+.chat .msg .date{
+    color: rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    
+    bottom: -40px;
+    font-size: 12px;
+}
+
+.chat .chatarea {
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.25);
+    padding: 0px 25px;
+    
+}
+
+.chat  .chatimg {
+   
+    width: 100px;
+    padding: 9px;
+    
+}
+
+.chat .chatimg img{
+    width: 100%;
+}
+
+.chat .msgbox .textarea{
+    position: relative;
+}
+
+.chat .msgbox .textarea input {
+   width: 85%;
+   padding: 15px;
+   background: #F1F1F1;
+   border: 0;
+   margin-top: 35px;
+   border-radius: 10px;
+}
+
+.chat .msgbox .textarea input::placeholder{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 20px;
+    opacity: .5;
+} 
+
+.chat .msgbox .textarea button{
+    background: #5F35F5;
+    color: #fff;
+    padding: 15px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 15px;
+}
+
+.chat .msgbox .textarea .camera {
+    position: absolute;
+    top: 48px;
+    right: 90px;
+    color: rgba(0, 0, 0, 0.5);
+}
