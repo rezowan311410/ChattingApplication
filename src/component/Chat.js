@@ -63,7 +63,7 @@ const Chat = () => {
         });
         
          console.log(msglist)
-    },[])
+    },[user.id])
    
   return (
     <div className='chat'>
