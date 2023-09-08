@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {BsThreeDotsVertical} from 'react-icons/bs';
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, onValue} from "firebase/database";
+import { getDatabase, ref, onValue,set, push,remove} from "firebase/database";
 import { Alert } from '@mui/material';
 import {RiMessage2Fill} from 'react-icons/ri';
 import {useSelector, useDispatch} from 'react-redux';
@@ -20,19 +20,19 @@ const Friends = (props) => {
     
     useEffect(()=>{
         const friend = ref(db,'acceptfriend/');
-        let friendarray = []
+       
         onValue(friend, (snapshot) => {
         //   const data = snapshot.val();
-        
+        let friendarray = []
           snapshot.forEach(item => {
            
                 
                 if(auth.currentUser.uid == item.val().reciverid || auth.currentUser.uid == item.val().senderid){
-                    friendarray.push(item.val())
+                    friendarray.push({ ...item.val(),key:item.key })
                 }
             });
             setFriends(friendarray)
-           
+          
         });
           
     },[])
@@ -55,6 +55,28 @@ const Friends = (props) => {
       dispatch(activeChat(userInfo))
       
 
+    }
+
+    let handleblock = (item)=>{
+      
+      auth.currentUser.uid == item.senderid ?
+      set(push(ref(db, 'block/')), {
+          block: item.recivername,
+          blockid: item.reciverid,
+          blockby: item.sendername,
+          blockbyid: item.senderid
+      }).then(()=>{
+          remove(ref(db,'acceptfriend/'+item.key))
+      })
+      :
+      set(push(ref(db, 'block/')), {
+        block: item.sendername,
+        blockid: item.senderid,
+        blockby: item.recivername,
+        blockbyid: item.reciverid
+      }).then(()=>{
+        remove(ref(db,'acceptfriend/'+item.key))
+    })
     }
   return (
     <div className='Grouprequest'>
@@ -84,7 +106,9 @@ const Friends = (props) => {
                    
                  
               </div>
+              
               <div className='button'>
+              <button onClick={()=>handleblock(item)}>Blocked</button>
                 {props.item=="date" ?<p>{item.date}</p>:
                  <div className='button'>
                  <button>

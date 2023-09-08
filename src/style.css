@@ -196,6 +196,10 @@ li{
     font-weight: bolder;
 }
 
+.lefttnotifications {
+    position: relative;
+}
+
 /* ========================
     leftbar-part end
 ============================ */
@@ -437,7 +441,7 @@ height: 358px;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-
+    margin-top: 0px;
 }
 .imagebox2 .Overlay {
     height: 100%;
@@ -644,6 +648,16 @@ height: 100vh;
     font-size: 12px;
 }
 
+.chat .msg .name{
+    color: rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    
+    top: -30px;
+    font-size: 12px;
+}
+
 .chat .chatarea {
     height: 70vh;
     overflow-y: scroll;
@@ -700,4 +714,30 @@ height: 100vh;
     top: 48px;
     right: 90px;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.notifications {
+    background: #FFFFFF;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 15px;
+    align-items: center;
+    color: #5F35F5;
+    position: absolute;
+    top: -3px;
+    left:-13px;
+}
+
+.updatename input{
+    width: 400px;
+    margin-top: 20px;
+    padding: 10px 0;
+    
+}
+
+.updatename input::placeholder{
+   
+   padding-left: 50px;
 }

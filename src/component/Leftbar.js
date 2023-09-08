@@ -3,33 +3,43 @@ import {AiOutlineHome,AiOutlineMessage,AiOutlineCloudUpload} from  'react-icons/
 import {IoMdNotificationsOutline} from  'react-icons/io';
 import { getStorage, ref, uploadString,getDownloadURL } from "firebase/storage";
 import {FiLogOut,FiSettings} from  'react-icons/fi';
-
+import {useSelector, useDispatch} from 'react-redux';
  import { getAuth, signOut,onAuthStateChanged,updateProfile } from "firebase/auth";
  import {useNavigate,Link} from 'react-router-dom'
  import { Typography,Box,Modal,} from '@mui/material'
  import Cropper from "react-cropper";
  import "cropperjs/dist/cropper.css";
+ import { getDatabase,push,ref as nref, set,onValue, remove} from "firebase/database";
+ import notification from '../slice/notificationslice';
+ 
 const Leftbar = (props) => {
+  let data = useSelector((state)=>state)
+
   const auth = getAuth();
+  // const dispatch = useDispatch();
   const storage = getStorage();
   const navigate = useNavigate()
   const [open,setOpen] = useState(false)
   const [open2,setOpen2] = useState(false)
   const [loading,setloading] = useState(false)
   const [check,setcheck] = useState(false)
+ 
   const defaultSrc =
   "https://raw.githubusercontent.com/roadmanfong/react-cropper/master/example/img/child.jpg";
   const [image, setImage] = useState();
   const [cropData, setCropData] = useState("#");
   const [cropper, setCropper] = useState();
 
-  
+  let [notificationtrone,setnotificationtrone] = useState([])
+    const db = getDatabase();
 
   let [name,setName] = useState('')
   let [email,setemail] = useState('')
   let [id,setid] = useState('')
   let [createtime,setcreatetime] = useState('')
+  let [upname,setupname] = useState('')
   
+  console.log(upname)
 
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
@@ -120,6 +130,55 @@ const Leftbar = (props) => {
     }
   };
 
+  let handleupdatename = (e)=>{
+    setupname(e.target.value)
+  }
+
+
+  useEffect(()=>{
+      
+    const starCountRef = nref(db, 'notification/');
+   
+    onValue(starCountRef, (snapshot) => {
+      let arr = []
+        snapshot.forEach((item)=>{
+       
+            
+        arr.push(item.val())
+    })
+    setnotificationtrone(arr)
+    // dispatch(notification(notificationtrone.length))
+    console.log()
+    })
+  
+  },[])
+ 
+  
+  //   let [minus,setminus] = useState('')
+  //   let [sminus,setsminus] = useState('')
+
+  //   let Notificationminus = ()=>{
+  //     if(notificationtrone.length >= 1){
+  //       setminus(0)
+  //     }else{
+  //       setsminus(notificationtrone.length)
+  //     }
+      
+  //     console.log(sminus)
+  // }
+
+  
+  let handleupname = ()=>{
+    set(push(nref(db, 'updatename/')), {
+      username: upname,
+      
+    }).then(()=>{
+      setOpen(false)
+    }
+
+    )
+  }
+
   return (
     <div className='leftbar-part'>
        <div className='imagebox'>
@@ -149,8 +208,18 @@ const Leftbar = (props) => {
                <AiOutlineMessage/>
               </Link>
             </li>      
-            <li className={props.active=='notification' && 'active'}>
-              <IoMdNotificationsOutline/>
+            <li  className={props.active=='notification' && 'active'}>
+             <Link to='/notification'>                                          
+             <IoMdNotificationsOutline/>              
+              <span className='lefttnotifications'><span className='notifications'>
+                {
+                  notificationtrone.length
+                }
+              
+              
+              
+              </span></span>
+             </Link>
             </li> 
             <li className={props.active=='setting' && 'active'}>
              <FiSettings/>
@@ -176,7 +245,12 @@ const Leftbar = (props) => {
       <li><span>your id:</span> {id}</li>
       <li><span>your email:</span> {email}</li>
       <li><span>Account Create:</span> {createtime}</li>
+      
      </ul>
+     <div className='updatename'>
+      <input onChange={handleupdatename} placeholder='type ypur update name'/>
+      <button onClick={handleupname}>update name</button>
+     </div>
     </Typography>
   </Box>
 </Modal>

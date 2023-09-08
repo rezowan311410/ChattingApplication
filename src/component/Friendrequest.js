@@ -18,7 +18,6 @@ const Friendrequest = () => {
     onValue(Friendrequestref, (snapshot) => {
       const data = snapshot.val();
       snapshot.forEach((item)=>{
-        console.log(item.key)
         if(auth.currentUser.uid == item.val().reciverid){
           FriendrequestArr.push({
           id:item.key,

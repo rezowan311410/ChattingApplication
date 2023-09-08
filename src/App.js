@@ -11,7 +11,7 @@ import { getAuth, signOut,onAuthStateChanged } from "firebase/auth";
 import { async } from '@firebase/util';
 import Resetpassword from './pages/Resetpassword';
 import Message from './pages/Message';
-
+import Notifications from './pages/Notifications';
 function App() {
   const auth = getAuth();
 let [dl,setdl] = useState(false)
@@ -61,6 +61,7 @@ useEffect(()=>{
       <Route path="/home" element={<Home/>}></Route>
       <Route path="/reset" element={<Resetpassword/>}></Route>
       <Route path="/message" element={<Message/>}></Route>
+      <Route path="/notification" element={<Notifications/>}></Route>
    
    
     </Routes>

@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import {BsThreeDotsVertical} from 'react-icons/bs';
-import {Box,Typography,Modal,TextField} from '@mui/material';
+import {Box,Typography,Modal,TextField,Button} from '@mui/material';
 import { getDatabase,push, ref, set,onValue} from "firebase/database";
 import { getAuth } from "firebase/auth";
+
+import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const Grouprequest = () => {
         const auth = getAuth();
         const db = getDatabase();
         const [open, setOpen] = React.useState(false);
         const handleOpen = () => setOpen(true);
         const handleClose = () => setOpen(false);
+        const [open2, setOpen2] = useState(false);
+        const handleOpen2 = () => setOpen2(true);
+        const handleClose2 = () => setOpen2(false);
+        const storage = getStorage();
         const [groupname,setgroupName] = useState('')
         const [groupetagline,setgroupetagline] = useState('')
         let [pusharr,setpusharr] = useState([])
+        let [memberlist,setmemberlist] = useState([])
         let [check,setcheck] = useState(false)
+        let [file,setfile] = useState(null)
+
         const inputstyle = {
             width:"100%",
             margin: "10px 0",
@@ -29,14 +38,25 @@ const Grouprequest = () => {
             setcheck(!check)
           });
         }
-        let handlejoingroup = (id,g)=>{
+        
+        let handlejoingroup = (id,g,gn,gt)=>{
            set(push(ref(db, 'groupjoinrequest/')), {
                admineid:id,
                groupid:g,
+               groupname:gn,
+               groupetagline:gt,
                userid: auth.currentUser.uid,
                username: auth.currentUser.displayName,
                userphoto: auth.currentUser.photoURL
           })
+          set(push(ref(db, 'notification/')), {
+            admineid:id,
+            groupid:g,
+            groupname:gn,
+            userid: auth.currentUser.uid,
+            username: auth.currentUser.displayName,
+            userphoto: auth.currentUser.photoURL
+       })
           
         }
     const style = {
@@ -71,7 +91,61 @@ const Grouprequest = () => {
         });
       },[check])
 
- 
+      useEffect(()=>{
+        const starCountRef = ref(db, 'groupmember/');
+        
+        onValue(starCountRef, (snapshot) => {
+          let arr2 = []
+            snapshot.forEach((item)=>{
+               if(item.val().userid == auth.currentUser.uid){
+                arr2.push(item.val().groupid)
+               }
+                
+            
+        })
+        setmemberlist(arr2)
+        });
+      },[])
+      
+
+      let handlegroupimg = (e)=>{
+        setfile(e.target.files[0])
+     
+      }
+
+      let handlegroupimageupload = ()=>{
+        const groupimageRef = sref(storage, 'uploadgroupimg/'+file.name);
+
+        const uploadTask = uploadBytesResumable(groupimageRef, file);
+        
+    
+        uploadTask.on('state_changed', 
+          (snapshot) => {
+          
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+          }, 
+          (error) => {
+           console.log(error)
+          }, 
+          () => {
+          
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log('File available at', downloadURL);
+              if(file!=""){
+              set(push(ref(db, 'uploadgroupimg/')), {
+                
+                
+               
+               
+              });
+              
+            }
+            });
+          }
+        );
+      }
+        
   return (
     <div className='Grouprequest group'>
     
@@ -89,16 +163,20 @@ const Grouprequest = () => {
     <>
      <div className='main'>
    <div className='img'>
-        <img src='./assets/images/Ellipse 2.png'/>
+        <img onClick={handleOpen2}  src="assets/images/Ellipse 4.png"/>
     </div>
     <div className='item'>
         <h1>{item.groupname}</h1>
         <p>{item.groupetagline}</p>
+        <p>{item.id}</p>
        
     </div>
-    <div className='button' onClick={()=>handlejoingroup(item.admineid,item.id)}>
-        <button>Join</button>
-    </div>
+    {memberlist.indexOf(item.id) == -1 &&(
+    <div className='button' onClick={()=>handlejoingroup(item.admineid,item.id,item.groupname,item.groupetagline)}>
+      <button>Join</button>
+      </div>
+    )
+    }
    </div>
     </>
    ))}
@@ -127,6 +205,27 @@ const Grouprequest = () => {
           </div>
         </Box>
       </Modal>
+      <Modal
+  open={open2}
+  onClose={handleClose2}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <Box sx={style}>
+    <Typography id="modal-modal-title" variant="h6" component="h2">
+      File send
+    </Typography>
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      <input onChange={handlegroupimg} type="file"/>
+    </Typography>
+    {/* {
+      progress > 0 &&
+      <LinearProgress variant="determinate" value={progress}/>
+    } */}
+    <Button  onClick={handlegroupimageupload} style={{marginTop:'10px'}} variant="contained">Image upload</Button>
+
+  </Box>
+</Modal>
 </div>
   )
 }
